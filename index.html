@@ -43,7 +43,7 @@
             }
 
             .title-icon {
-                @apply w-8 h-8 object-contain; 
+                @apply w-8 h-8 object-contain;
             }
         }
     </style>
@@ -169,11 +169,13 @@
                         </div>
                     </div>
 
-                    <div class="card-hover" onclick="openPage('ygjpxl')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
-                            <img src="icons/野怪极品个体血量.png" alt="野怪极品个体血量" class="w-20 h-20 mx-auto mb-2 object-contain ">
-                            <b class="text-sm text-dark">精灵高个体血量查询</b>
-                        </div>
+                    <div class="card-hover" >
+                        <a href="SptBoss.html" class="block" onclick="goToSptBoss()">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                                <img src="icons/cs.png" alt="测试" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                                <b class="text-sm text-dark">测试</b>
+                            </div>
+                        </a>
                     </div>
 
                 </div>
@@ -724,6 +726,15 @@
                 }
             });
         });
+
+        // 跳转到sptboss.html时，设置一个临时标记
+        function goToSptBoss() {
+            // 存储标记：表示是从主页正常跳转过来的
+            sessionStorage.setItem('fromIndex', 'true');
+            // 执行跳转
+            window.location.href = 'sptboss.html';
+        }
+
     </script>
 </body>
 </html>

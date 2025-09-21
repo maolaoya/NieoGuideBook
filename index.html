@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nieo查询小工具</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#60A5FA',    // 主色调
+                        secondary: '#93C5FD',  // 辅助色
+                        accent: '#3B82F6',     // 强调色
+                        light: '#EFF6FF',      // 背景色
+                        dark: '#000000'        // 文本色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+
+            .window-shadow {
+                box-shadow: 0 4px 20px rgba(96, 165, 250, 0.15);
+            }
+
+            .back-btn {
+                @apply px-3 py-1 rounded text-sm bg-white/30 hover:bg-white/50 text-dark transition-colors duration-200 focus:outline-none focus:ring-1 focus:ring-dark;
+            }
+
+            .title-icon {
+                @apply w-8 h-8 object-contain; 
+            }
+        }
+    </style>
+</head>
+<body class="bg-light font-sans text-gray-700">
+    <!-- 主窗口容器 -->
+    <div class="w-full max-w-4xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden border border-primary/30 mt-4">
+        <!-- 标题栏 -->
+        <div class="bg-primary text-dark px-4 py-2 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <img src="icons/Ico.png" alt="工具图标" class="title-icon">
+                <span>Nieo查询小工具-by.城南以南</span>
+            </div>
+
+            <!-- 按钮容器 -->
+            <div class="flex items-center gap-2">
+                <!-- 返回主页按钮 -->
+                <button id="backmain-button" class="back-btn hidden" onclick="gomain()">
+                    <i class="fa fa-home mr-1"></i> 主页
+                </button>
+
+                <!-- 返回上一页按钮 -->
+                <button id="back-button" class="back-btn hidden" onclick="goBack()">
+                    <i class="fa fa-arrow-left mr-1"></i> 上一页
+                </button>
+            </div>
+        </div>
+
+        <!-- 内容区域-->
+        <div id="content-container" class="min-h-[500px] p-6">
+            <!-- 主页面 -->
+            <div id="main-page" class="page-content">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+                    <div class="card-hover" onclick="openPage('mineral-resources')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/黄金矿.png" alt="矿产资源分布" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">矿产资源分布</b>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('spt-strategy')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/spt.png" alt="SPT攻略:必杀篇" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">SPT攻略:必杀篇</b>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('spirit-fusion')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/元神珠.png" alt="精灵融合配方" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">精灵融合配方</b>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('personality-check')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/性格查询.png" alt="性格查询" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">性格查询</b>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('mineral-price')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/赛尔豆.png" alt="矿物回收价格" class="w-20 h-20 mx-auto mb-2 object-contain">
+                            <b class="text-sm text-dark">矿物回收价格</b>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('wild-drops')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/海洋能量.png" alt="野怪掉落物" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">野怪掉落物</b>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('set-exchange')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/防寒套装兑换.png" alt="套装兑换" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">套装兑换</b>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('characteristic-check')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/特性.png" alt="特性查询" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">特性查询</b>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('spirit-recommendation')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/盖亚头.png" alt="精灵刷法推荐" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">精灵刷法推荐</b>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('beginner-guide')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/yj.png" alt="开荒攻略" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">开荒攻略</b>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('rare-spirits')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/bl.png" alt="稀有精灵分布" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">稀有精灵分布</b>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('wild-learning')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/学习机.png" alt="野怪学习力查询" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">野怪学习力查询</b>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('pnsxcx')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/谱尼.png" alt="谱尼属性查询" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">谱尼属性查询</b>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('ygjpxl')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/野怪极品个体血量.png" alt="野怪极品个体血量" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">精灵高个体血量查询</b>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 一级子页：矿产资源分布 -->
+            <div id="mineral-resources" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">矿产资源分布</h2>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+                    <div class="card-hover" onclick="openPage('hjk')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/黄金矿.png" alt="hjk" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">黄晶矿</p>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('jw')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/甲烷.png" alt="jw" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">甲烷</p>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('dns')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/电能石.png" alt="dns" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">电能石</p>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('tjj')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/藤结晶.png" alt="tjj" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">藤结晶</p>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('mgjj')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/蘑菇结晶.png" alt="hjk" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">蘑菇结晶</p>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('ngjt')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/纳格晶体.png" alt="ngjt" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">纳格晶体</p>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('ddgs')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/豆豆果实.png" alt="ddgs" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">豆豆果实</p>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('lnyks')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/露尼亚矿石.png" alt="lnyks" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">露尼亚矿石</p>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('xllks')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/希罗里矿石.png" alt="xllks" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">希罗里矿石</p>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('ogdks')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/欧古德矿石.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">欧古德矿石</p>
+                        </div>
+                    </div>
+
+                    <div class="card-hover" onclick="openPage('xosh')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/希欧珊瑚.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">希欧珊瑚</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 一级子页：spt攻略 -->
+            <div id="spt-strategy" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark">SPT攻略:必杀篇</h2>
+                <p class="mb-4">这里是SPT攻略的详细信息...</p>
+                <div class="bg-secondary/20 p-4 rounded">
+                    <p>1. 保持移动，避免被包围</p>
+                    <p>2. 优先攻击远程敌人</p>
+                    <p>3. 合理使用必杀技</p>
+                </div>
+            </div>
+
+            <!-- 一级子页：精灵融合 -->
+            <div id="spirit-fusion" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark">精灵融合</h2>
+                <p class="mb-4">这里是精灵融合的详细信息...</p>
+            </div>
+
+            <!-- 一级子页：性格查询 -->
+            <div id="personality-check" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark">性格查询</h2>
+                <p class="mb-4">这里是性格查询的详细信息...</p>
+            </div>
+
+            <!-- 一级子页：矿产回收 -->
+            <div id="mineral-price" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark">矿物回收价格</h2>
+                <p class="mb-4">这里是矿物回收价格的详细信息...</p>
+            </div>
+
+            <!-- 一级子页：野怪掉落物分布 -->
+            <div id="wild-drops" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark">野怪掉落物</h2>
+                <p class="mb-4">这里是野怪掉落物的详细信息...</p>
+            </div>
+
+            <!-- 一级子页：套装兑换 -->
+            <div id="set-exchange" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark">套装兑换</h2>
+                <p class="mb-4">这里是套装兑换的详细信息...</p>
+            </div>
+
+            <!-- 一级子页：特性查询 -->
+            <div id="characteristic-check" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark">特性查询</h2>
+                <p class="mb-4">这里是特性查询的详细信息...</p>
+            </div>
+
+            <!-- 一级子页：精灵刷法 -->
+            <div id="spirit-recommendation" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark">精灵刷法推荐</h2>
+                <p class="mb-4">这里是精灵刷法推荐的详细信息...</p>
+            </div>
+
+            <!-- 一级子页：开荒攻略 -->
+            <div id="beginner-guide" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark">开荒攻略</h2>
+                <p class="mb-4">这里是开荒攻略的详细信息...</p>
+            </div>
+
+            <!-- 一级子页：稀有精灵分布 -->
+            <div id="rare-spirits" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark">稀有精灵</h2>
+                <p class="mb-4">这里是稀有精灵的详细信息...</p>
+            </div>
+
+            <!-- 一级子页：野怪学习力 -->
+            <div id="wild-learning" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark">野怪学习力查询</h2>
+                <p class="mb-4">这里是野怪学习力查询的详细信息...</p>
+            </div>
+
+            <!-- 二级子页：矿产资源分布-黄金矿 -->
+            <div id="hjk" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">分布星球</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="card-hover" onclick="openPage('hyx')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/海洋星.png" alt="hyx" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">海洋星</p>
+                        </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('klsx')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/克洛斯星.png" alt="klsx" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">克洛斯星</p>
+                        </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('hsx')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/火山星.png" alt="hsx" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">火山星</p>
+                        </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('adx')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/艾迪星.png" alt="adx" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">艾迪星</p>
+                        </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('bgx')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/比格星.png" alt="bgx" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">比格星</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 二级子页：矿产资源分布-甲烷 -->
+            <div id="jw" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">分布星球</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="card-hover" onclick="openPage('hyxjw')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/海洋星.png" alt="hyx" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">海洋星</p>
+                        </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('hsxjw')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/火山星.png" alt="hsx" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">火山星</p>
+                        </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('yxx')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/云霄星.png" alt="adx" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">云霄星</p>
+                        </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('skrxjw')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/斯科尔星.png" alt="skrx" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">斯科尔星</p>
+                        </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('ttxjw')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/拓梯星.png" alt="skrx" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">拓梯星</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 二级子页：矿产资源分布-地能石 -->
+            <div id="dns" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">分布星球</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="card-hover" onclick="openPage('hyxjw')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/双子贝塔星.png" alt="hyx" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">双子贝塔星</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 三级子页-所有矿物分布地图具体截图 -->
+            <div id="hyx" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">帕诺星系-海洋星深水区</h2>
+                <img src="icons/map/hyx.png" alt="hyx" class=" mx-auto ">
+            </div>
+
+            <div id="klsx" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">帕诺星系-克洛斯星一层</h2>
+                <img src="icons/map/klsx.png" alt="klsx" class=" mx-auto ">
+            </div>
+
+            <div id="hsx" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">帕诺星系-火山星一层</h2>
+                <img src="icons/map/hsx.png" alt="hsx" class=" mx-auto ">
+            </div>
+
+            <div id="adx" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">卡兰星系-艾迪星一层</h2>
+                <img src="icons/map/adx.png" alt="adx" class=" mx-auto ">
+            </div>
+
+            <div id="bgx" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">罗格星系-比格星一层</h2>
+                <img src="icons/map/bgx.png" alt="bgx" class=" mx-auto ">
+            </div>
+
+            <div id="hyxjw" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">帕诺星系-海洋星一层</h2>
+                <img src="icons/map/hyxjw.png" alt="hyx" class=" mx-auto ">
+            </div>
+
+            <div id="hsxjw" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">帕诺星系-火三星二层</h2>
+                <img src="icons/map/hsxsd.png" alt="hsx" class=" mx-auto ">
+                <img src="icons/map/hsxjw.png" alt="hsx" class=" mx-auto mt-10">
+            </div>
+
+            <div id="yxx" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">帕诺星系-云霄星一层</h2>
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">先点击石块后才能开采哦！</h2>
+                <img src="icons/map/yxxsk.png" alt="yxx" class=" mx-auto ">
+                <img src="icons/map/yxxjw.png" alt="yxx" class=" mx-auto mt-10 ">
+            </div>
+
+            <div id="skrxjw" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">卡兰星系-斯科尔星一层</h2>
+                <img src="icons/map/skrxjw.png" alt="skrx" class=" mx-auto ">
+            </div>
+
+            <div id="ttxjw" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">罗格星系-拓梯星一层</h2>
+                <img src="icons/map/ttxjw.png" alt="ttx" class=" mx-auto ">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 栈（管理主子页面顺序）
+        let pageStack = ['main-page'];
+
+        /**
+         * 打开新页面
+         * @param {string} targetPageId - 目标页面ID
+         */
+        function openPage(targetPageId) {
+            // 1. 获取当前显示的页面（栈顶）
+            const currentPageId = pageStack[pageStack.length - 1];
+            // 2. 隐藏当前页面，显示目标页面
+            document.getElementById(currentPageId).classList.add('hidden');
+            document.getElementById(targetPageId).classList.remove('hidden');
+            // 3. 目标页面加入栈，记录顺序
+            pageStack.push(targetPageId);
+            // 4. 显示返回按钮（栈长度>1时）
+            updateBackButtons();
+        }
+
+        /**
+         * 逐级返回上一页
+         */
+        function goBack() {
+            // 只剩主页面时不操作
+            if (pageStack.length <= 1) return;
+            // 1. 隐藏当前页面（栈顶）并移除
+            const currentPageId = pageStack.pop();
+            document.getElementById(currentPageId).classList.add('hidden');
+            // 2. 显示上一级页面（新栈顶）
+            const prevPageId = pageStack[pageStack.length - 1];
+            document.getElementById(prevPageId).classList.remove('hidden');
+            // 3. 更新返回按钮状态
+            updateBackButtons();
+        }
+
+        // 返回首页
+        function gomain() {
+            // 只剩主页面时不操作
+            if (pageStack.length <= 1) return;
+
+            // 隐藏当前页面
+            const currentPageId = pageStack.pop();
+            document.getElementById(currentPageId).classList.add('hidden');
+
+            // 清空栈，只保留主页面
+            pageStack = ['main-page'];
+
+            // 显示主页面
+            document.getElementById('main-page').classList.remove('hidden');
+
+            // 更新返回按钮状态
+            updateBackButtons();
+        }
+
+        // 更新返回按钮显示状态
+        function updateBackButtons() {
+            const shouldShow = pageStack.length > 1;
+            document.getElementById('backmain-button').classList.toggle('hidden', !shouldShow);
+            document.getElementById('back-button').classList.toggle('hidden', !shouldShow);
+        }
+
+        // 页面加载初始化
+        document.addEventListener('DOMContentLoaded', function () {
+            // 图片加载失败处理
+            document.querySelectorAll('img').forEach(img => {
+                img.onerror = function () {
+                    this.style.display = 'none';
+                    const icon = document.createElement('i');
+                    icon.className = img.classList.contains('title-icon')
+                        ? 'fa fa-search text-dark'
+                        : 'fa fa-question-circle text-4xl text-primary mx-auto';
+                    this.parentNode.insertBefore(icon, this);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

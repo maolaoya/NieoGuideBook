@@ -34,6 +34,10 @@
                 @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
             }
 
+            .card-hover:hover  > div,.card-hover:hover > a > div，{
+                @apply border-2 border-accent;
+            }
+
             .window-shadow {
                 box-shadow: 0 4px 20px rgba(96, 165, 250, 0.15);
             }
@@ -79,136 +83,108 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
 
                     <div class="card-hover" onclick="openPage('mineral-resources')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300 ">
                             <img src="icons/黄金矿.png" alt="矿产资源分布" class="w-20 h-20 mx-auto mb-2 object-contain ">
                             <b class="text-sm text-dark">矿产资源分布</b>
                         </div>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="SptBoss.html" class="block" onclick="goToSptBoss()">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover " onclick="goOut('SptBoss.html')">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/spt.png" alt="SPT" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">SPT攻略：必杀篇</b>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="SoulBead.html" class="block" onclick="goToSptBoss()">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="goOut('SoulBead.html')">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/元神珠.png" alt="精灵融合" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">精灵融合</b>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="PetXg.html" class="block" onclick="goToSptBoss()">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="goOut('PetXg.html')">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/性格查询.png" alt="精灵性格" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">性格查询</b>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="MinerR.html" class="block" onclick="goToSptBoss()">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="goOut('MinerR.html')">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/赛尔豆.png" alt="材料回收价格" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">材料回收价格查询</b>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="SpiritItem.html" class="block" onclick="goToSptBoss()">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="goOut('SpiritItem.html')">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/海洋能量.png" alt="野怪掉落材料" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">野怪掉落材料</b>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="Helmet.html" class="block" onclick="goToSptBoss()">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="goOut('Helmet.html')">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/防寒套装兑换.png" alt="装备获取查询" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">装备获取查询</b>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="PetTx.html" class="block" onclick="goToSptBoss()">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="goOut('PetTx.html')">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/特性.png" alt="特性" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">特性查询</b>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="Strong.html" class="block" onclick="goToSptBoss()">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="goOut('Strong.html')">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/盖亚头.png" alt="精灵刷法推荐" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">精灵刷法推荐</b>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="KaiH.html" class="block" onclick="goToSptBoss()">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="goOut('KaiH.html')">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/yj.png" alt="开荒攻略" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">开荒攻略</b>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="RarePet.html" class="block" onclick="goToSptBoss()">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="goOut('RarePet.html')"> 
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/bl.png" alt="稀有精灵" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">稀有精灵分布</b>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="PetStudy.html" class="block" onclick="goToSptBoss()">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="goOut('PetStudy.html')">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/学习机.png" alt="学习力" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">野怪学习力查询</b>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="PuNi.html" class="block" onclick="goToSptBoss()">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="goOut('PuNi.html')">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/谱尼.png" alt="pn" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">谱尼属性查询</b>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="PetHealth.html" class="block" onclick="goToSptBoss()">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="goOut('PetHealth.html')">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/野怪极品个体血量.png" alt="g" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">野怪高个体血量</b>
                             </div>
-                        </a>
                     </div>
 
-                    <div class="card-hover">
-                        <a href="https://www.yuque.com/javalangobject/kb/zzmqkfub6ci6v3qg" class="block">
-                            <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="goOut('https://www.yuque.com/javalangobject/kb/zzmqkfub6ci6v3qg')">
+                            <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                                 <img src="icons/nieo.png" alt="g" class="w-20 h-20 mx-auto mb-2 object-contain ">
                                 <b class="text-sm text-dark">[必看]尼尔号游玩须知</b>
                             </div>
-                        </a>
                     </div>
 
                 </div>
@@ -222,84 +198,84 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
 
                     <div class="card-hover" onclick="openPage('hjk')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/黄金矿.png" alt="hjk" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">黄晶矿</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('jw')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/甲烷.png" alt="jw" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">甲烷</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('dns')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/电能石.png" alt="dns" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">电能石</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('tjj')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/藤结晶.png" alt="tjj" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">藤结晶</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('mgjj')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/蘑菇结晶.png" alt="hjk" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">蘑菇结晶</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('ngjt')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/纳格晶体.png" alt="ngjt" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">纳格晶体</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('ddgs')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/豆豆果实.png" alt="ddgs" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">豆豆果实</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('lnyks')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/露尼亚矿石.png" alt="lnyks" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">露尼亚矿石</p>
                         </div>
                     </div>
 
-                    <div class="card-hover" onclick="openPage('xllks')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="openPage('xllks')"> 
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/希罗里矿石.png" alt="xllks" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">希罗里矿石</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('ogdks')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/欧古德矿石.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">欧古德矿石</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('xosh')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/希欧珊瑚.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">希欧珊瑚</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="alert('获取入口被斯诺星的大雪堵住啦！')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/绿斯诺豌豆.png" alt="lnswd" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">绿斯诺豌豆</p>
                         </div>
@@ -768,11 +744,11 @@
         });
 
         // 跳转到sptboss.html时，设置一个临时标记
-        function goToSptBoss() {
+        function goOut(pageUrl) {
             // 存储标记：表示是从主页正常跳转过来的
             sessionStorage.setItem('fromIndex', 'true');
             // 执行跳转
-            window.location.href = 'sptboss.html';
+            window.location.href = pageUrl;
         }
 
     </script>

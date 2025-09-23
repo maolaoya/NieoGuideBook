@@ -34,6 +34,10 @@
                 @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
             }
 
+            .card-hover:hover > div {
+                @apply border-2 border-accent;
+            }
+
             .window-shadow {
                 box-shadow: 0 4px 20px rgba(96, 165, 250, 0.15);
             }
@@ -45,6 +49,7 @@
             .title-icon {
                 @apply w-8 h-8 object-contain;
             }
+
         }
     </style>
 </head>
@@ -85,29 +90,29 @@
                 <h2 class="text-xl font-bold mb-4 text-dark text-center">SPT-BOSS攻略</h2>
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
 
-                    <div class="card-hover" onclick="openPage('pnxx')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="openPage('pnxx')" >
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/帕诺星系.png" alt="pnxx" class="w-20 h-20 mx-auto mb-2 object-contain ">
                             <b class="text-sm text-dark">帕诺星系</b>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('klxx')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/卡兰星系.png" alt="klxx" class="w-20 h-20 mx-auto mb-2 object-contain ">
                             <b class="text-sm text-dark">卡兰星系</b>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('lgxx')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/罗格星系.png" alt="lgxx" class="w-20 h-20 mx-auto mb-2 object-contain ">
                             <b class="text-sm text-dark">罗格星系</b>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('ahwdc')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/暗黑武斗场.png" alt="ahwdc" class="w-20 h-20 mx-auto mb-2 object-contain ">
                             <b class="text-sm text-dark">暗黑武斗场</b>
                         </div>
@@ -121,43 +126,43 @@
             <div id="pnxx" class="page-content hidden">
                 <h2 class="text-xl font-bold mb-4 text-dark text-center">帕诺星系下的SPTBOSS</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="card-hover" onclick="openPage('mgg')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                    <div class="card-hover" onclick="selectCard(this); openPage('mgg')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/蘑菇怪.png" alt="mgg" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">蘑菇怪</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('gys')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/钢牙鲨.png" alt="gys" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">钢牙鲨</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('mgg')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/蘑菇怪.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">蘑菇怪</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('mgg')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/蘑菇怪.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">蘑菇怪</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('mgg')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/蘑菇怪.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">蘑菇怪</p>
                         </div>
                     </div>
 
                     <div class="card-hover" onclick="openPage('mgg')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/蘑菇怪.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">蘑菇怪</p>
                         </div>
@@ -170,6 +175,7 @@
             <script>
                 // 栈（管理主子页面顺序）
                 let pageStack = ['main-page'];
+
 
                 /**
                  * 打开新页面

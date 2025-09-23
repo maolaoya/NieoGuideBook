@@ -79,146 +79,185 @@
         </div>
 
         <!-- 内容区域-->
-        <div id="content-container" class="min-h-[500px] p-6">
+        <div id="content-container" class="min-h-[200px] p-6">
             <!-- 主页面 -->
             <div id="main-page" class="page-content">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
 
-                    <div class="card-hover" onclick="openPage('2')">
+                    <div class="card-hover" onclick="openPage('pnxx')">
                         <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
-                            <img src="icons/黄金矿.png" alt="测试" class="w-20 h-20 mx-auto mb-2 object-contain ">
-                            <b class="text-sm text-dark">测试</b>
+                            <img src="icons/帕诺星系.png" alt="pnxx" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">帕诺星系</b>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <!-- 子页面 -->
-            <div id="2" class="page-content hidden">
-
-                <div class="card-hover" onclick="openPage('3')">
-                    <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
-                        <img src="icons/希欧珊瑚.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
-                        <p class="text-sm text-dark">希欧珊瑚</p>
+                    <div class="card-hover" onclick="openPage('klxx')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/卡兰星系.png" alt="klxx" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">卡兰星系</b>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-
-
-
-            <div id="3" class="page-content hidden">
-
-                <div class="card-hover" onclick="openPage('xosh')">
-                    <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
-                        <img src="icons/希欧珊瑚.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
-                        <p class="text-sm text-dark">希欧珊瑚3</p>
+                    <div class="card-hover" onclick="openPage('lgxx')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/罗格星系.png" alt="lgxx" class="w-20 h-20 mx-auto mb-2 object-contain ">
+                            <b class="text-sm text-dark">罗格星系</b>
+                        </div>
                     </div>
+
                 </div>
+            </div>
+
+            <!-- 1级子页面 -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div id="pnxx" class="page-content hidden">
+
+                    <div class="card-hover" onclick="openPage('3')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/希欧珊瑚.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">希欧珊瑚</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="klxx" class="page-content hidden">
+
+                    <div class="card-hover" onclick="openPage('3')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/希欧珊瑚.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">希欧珊瑚</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="lgxx" class="page-content hidden">
+
+                    <div class="card-hover" onclick="openPage('3')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/希欧珊瑚.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">希欧珊瑚</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+                <!-- 2级子页面 -->
+                <div id="3" class="page-content hidden">
+
+                    <div class="card-hover" onclick="openPage('xosh')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/希欧珊瑚.png" alt="ogdks" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">希欧珊瑚3</p>
+                        </div>
+                    </div>
+
+                </div>
+
 
             </div>
 
 
-        </div>
+            <script>
+                // 栈（管理主子页面顺序）
+                let pageStack = ['main-page'];
 
-
-    <script>
-        // 栈（管理主子页面顺序）
-        let pageStack = ['main-page'];
-
-        /**
-         * 打开新页面
-         * @param {string} targetPageId - 目标页面ID
-         */
-        function openPage(targetPageId) {
-            // 1. 获取当前显示的页面（栈顶）
-            const currentPageId = pageStack[pageStack.length - 1];
-            // 2. 隐藏当前页面，显示目标页面
-            document.getElementById(currentPageId).classList.add('hidden');
-            document.getElementById(targetPageId).classList.remove('hidden');
-            // 3. 目标页面加入栈，记录顺序
-            pageStack.push(targetPageId);
-            // 4. 显示返回按钮（栈长度>1时）
-            updateBackButtons();
-        }
-
-        /**
-         * 逐级返回上一页
-         */
-        function goBack() {
-            // 只剩主页面时不操作
-            if (pageStack.length <= 1) return;
-            // 1. 隐藏当前页面（栈顶）并移除
-            const currentPageId = pageStack.pop();
-            document.getElementById(currentPageId).classList.add('hidden');
-            // 2. 显示上一级页面（新栈顶）
-            const prevPageId = pageStack[pageStack.length - 1];
-            document.getElementById(prevPageId).classList.remove('hidden');
-            // 3. 更新返回按钮状态
-            updateBackButtons();
-        }
-
-        // 返回首页
-        function gomain() {
-            // 只剩主页面时跳回index
-            if (pageStack.length <= 1) location.href='index.html';
-
-            // 隐藏当前页面
-            const currentPageId = pageStack.pop();
-            document.getElementById(currentPageId).classList.add('hidden');
-        }
-
-        //返回副子页
-        function goMid() {
-
-            // 隐藏当前页面
-            const currentPageId = pageStack.pop();
-            document.getElementById(currentPageId).classList.add('hidden');
-
-            // 清空栈，只保留主页面
-            pageStack = ['main-page'];
-
-            // 显示主页面
-            document.getElementById('main-page').classList.remove('hidden');
-
-            // 更新返回按钮状态
-            updateBackButtons();
-        }
-
-        // 更新返回按钮显示状态
-        function updateBackButtons() {
-            const shouldShow = pageStack.length > 1;
-            document.getElementById('backmidlle-button').classList.toggle('hidden', !shouldShow);
-            document.getElementById('back-button').classList.toggle('hidden', !shouldShow);
-            document.getElementById('backmain-button').classList.toggle('hidden', shouldShow);
-        }
-
-        // 页面加载初始化
-        document.addEventListener('DOMContentLoaded', function () {
-            // 图片加载失败处理
-            document.querySelectorAll('img').forEach(img => {
-                img.onerror = function () {
-                    this.style.display = 'none';
-                    const icon = document.createElement('i');
-                    icon.className = img.classList.contains('title-icon')
-                        ? 'fa fa-search text-dark'
-                        : 'fa fa-question-circle text-4xl text-primary mx-auto';
-                    this.parentNode.insertBefore(icon, this);
+                /**
+                 * 打开新页面
+                 * @param {string} targetPageId - 目标页面ID
+                 */
+                function openPage(targetPageId) {
+                    // 1. 获取当前显示的页面（栈顶）
+                    const currentPageId = pageStack[pageStack.length - 1];
+                    // 2. 隐藏当前页面，显示目标页面
+                    document.getElementById(currentPageId).classList.add('hidden');
+                    document.getElementById(targetPageId).classList.remove('hidden');
+                    // 3. 目标页面加入栈，记录顺序
+                    pageStack.push(targetPageId);
+                    // 4. 显示返回按钮（栈长度>1时）
+                    updateBackButtons();
                 }
-            });
-        });
 
-        // 检查是否从主页正常跳转过来
-        const fromIndex = sessionStorage.getItem('fromIndex');
+                /**
+                 * 逐级返回上一页
+                 */
+                function goBack() {
+                    // 只剩主页面时不操作
+                    if (pageStack.length <= 1) return;
+                    // 1. 隐藏当前页面（栈顶）并移除
+                    const currentPageId = pageStack.pop();
+                    document.getElementById(currentPageId).classList.add('hidden');
+                    // 2. 显示上一级页面（新栈顶）
+                    const prevPageId = pageStack[pageStack.length - 1];
+                    document.getElementById(prevPageId).classList.remove('hidden');
+                    // 3. 更新返回按钮状态
+                    updateBackButtons();
+                }
 
-        if (fromIndex) {
-            // 如果是正常跳转，清除标记（避免后续刷新时误判）
-            sessionStorage.removeItem('fromIndex');
-        } else {
-            // 如果没有标记（说明是刷新或直接访问），跳回主页
-            window.location.href = 'index.html';
-        }
+                // 返回首页
+                function gomain() {
+                    // 只剩主页面时跳回index
+                    if (pageStack.length <= 1) location.href = 'index.html';
 
-    </script>
+                    // 隐藏当前页面
+                    const currentPageId = pageStack.pop();
+                    document.getElementById(currentPageId).classList.add('hidden');
+                }
+
+                //返回副子页
+                function goMid() {
+
+                    // 隐藏当前页面
+                    const currentPageId = pageStack.pop();
+                    document.getElementById(currentPageId).classList.add('hidden');
+
+                    // 清空栈，只保留主页面
+                    pageStack = ['main-page'];
+
+                    // 显示主页面
+                    document.getElementById('main-page').classList.remove('hidden');
+
+                    // 更新返回按钮状态
+                    updateBackButtons();
+                }
+
+                // 更新返回按钮显示状态
+                function updateBackButtons() {
+                    const shouldShow = pageStack.length > 1;
+                    document.getElementById('backmidlle-button').classList.toggle('hidden', !shouldShow);
+                    document.getElementById('back-button').classList.toggle('hidden', !shouldShow);
+                    document.getElementById('backmain-button').classList.toggle('hidden', shouldShow);
+                }
+
+                // 页面加载初始化
+                document.addEventListener('DOMContentLoaded', function () {
+                    // 图片加载失败处理
+                    document.querySelectorAll('img').forEach(img => {
+                        img.onerror = function () {
+                            this.style.display = 'none';
+                            const icon = document.createElement('i');
+                            icon.className = img.classList.contains('title-icon')
+                                ? 'fa fa-search text-dark'
+                                : 'fa fa-question-circle text-4xl text-primary mx-auto';
+                            this.parentNode.insertBefore(icon, this);
+                        }
+                    });
+                });
+
+                // 检查是否从主页正常跳转过来
+                const fromIndex = sessionStorage.getItem('fromIndex');
+
+                if (fromIndex) {
+                    // 如果是正常跳转，清除标记（避免后续刷新时误判）
+                    sessionStorage.removeItem('fromIndex');
+                } else {
+                    // 如果没有标记（说明是刷新或直接访问），跳回主页
+                    window.location.href = 'index.html';
+                }
+
+            </script>
 </body>
 </html>

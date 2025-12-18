@@ -59,7 +59,7 @@
         <div class="bg-primary text-dark px-4 py-2 flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <img src="icons/Ico.png" alt="工具图标" class="title-icon">
-                <span>Nieo查询小工具</span>
+                <span>Nieo查询小工具-by.城南以南(有错误请联系我)</span>
             </div>
 
             <!-- 按钮容器 -->
@@ -289,7 +289,7 @@
                         </div>
                     </div>
 
-                    <div class="card-hover" onclick="alert('获取入口被斯诺星的大雪堵住啦！')">
+                    <div class="card-hover" onclick="openPage('snxml')">
                         <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/绿斯诺豌豆.png" alt="lnswd" class="w-16 h-16 mx-auto mb-2 object-contain ">
                             <p class="text-sm text-dark">绿斯诺豌豆</p>
@@ -560,6 +560,19 @@
                 </div>
             </div>
 
+            <!-- 二级子页：矿产资源分布-lnswd -->
+            <div id="snxml" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">分布星球</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="card-hover" onclick="openPage('lnswd')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border border-secondary/30">
+                            <img src="icons/snx.png" alt="snxml" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">斯诺星</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <!-- 三级子页-所有矿物分布地图具体截图 -->
             <div id="hyx" class="page-content hidden">
@@ -676,6 +689,18 @@
                 <img src="icons/map/lxozy.png" alt="ttx" class=" mx-auto ">
                 <h2 class="text-x  mb-4 text-dark text-center mt-5 ">然后点击开采(带上超能NONO)</h2>
                 <img src="icons/map/xosh.png" alt="ttx" class=" mx-auto ">
+            </div>
+
+            <div id="lnswd" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">帕诺星系-斯诺星</h2>
+                <h2 class="text-x  mb-4 text-dark text-center mt-5 ">进入传送仓</h2>
+                <img src="icons/map/csktd.png" alt="ttx" class=" mx-auto ">
+                <h2 class="text-x  mb-4 text-dark text-center mt-5 ">找到斯诺星密林-点击传送</h2>
+                <img src="icons/map/snxml1.png" alt="ttx" class=" mx-auto ">
+                <h2 class="text-x  mb-4 text-dark text-center mt-5 ">点击绿色藤曼-带上超能NONO</h2>
+                <img src="icons/map/snxml2.png" alt="ttx" class=" mx-auto ">
+                <h2 class="text-x  mb-4 text-dark text-center mt-5 ">待超能NONO切割完后点击获取</h2>
+                <img src="icons/map/snxml3.png" alt="ttx" class=" mx-auto ">
             </div>
 
         </div>

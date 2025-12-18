@@ -96,14 +96,14 @@
                         </div>
                     </div>
 
-                    <div class="card-hover" onclick="openPage(Location.href='PetTx.html')">
+                    <div class="card-hover" onclick="openPage('txpf')">
                         <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/特性.png" alt="txpf" class="w-20 h-20 mx-auto mb-2 object-contain ">
                             <b class="text-sm text-dark">特性合成配方</b>
                         </div>
                     </div>
 
-                    <div class="card-hover" onclick="openPage('xs')">
+                    <div class="card-hover" onclick="openPage('yszxx')">
                         <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
                             <img src="icons/元神珠.png" alt="yszxx" class="w-20 h-20 mx-auto mb-2 object-contain ">
                             <b class="text-sm text-dark">元神珠吸收地点</b>
@@ -118,7 +118,7 @@
             <!-- 1级子页面 融合精灵 -->
             <div id="pnxx" class="page-content hidden">
                 <h2 class="text-xl font-bold mb-4 text-dark text-center">尼尔号目前可融合精灵配方</h2>
-                <h2 class="text-x  mb-4 text-dark text-center">融合配方将与尼尔号同步更新</h2>
+                <h2 class="text-x  mb-4 text-dark text-center">融合配方将与尼尔号同步更新,推荐性格特性仅供参考</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div class="card-hover" onclick="openPage('tr')">
                         <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
@@ -239,65 +239,250 @@
                         </div>
                     </div>
 
-                    <div class="card-hover" onclick="openPage('blke')">
+                </div>
+            </div>
+
+            <!-- 1级子页面 特性配方 -->
+            <div id="txpf" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">尼尔号融合特性配方</h2>
+                <h2 class="text-x  mb-4 text-dark text-center">特性融合配方将与尼尔号同步更新</h2>
+                <h2 class="text-x  mb-4 text-dark text-center">正确对应的配方将会在四个特性内随机出现-同配方融合特性将不会相同</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="card-hover" onclick="openPage('tx1')">
+                    <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300 h-full flex items-center justify-center">
+                        <div class="w-full h-full grid grid-cols-2 grid-rows-2 gap-2">
+                            <div class="flex items-center justify-center bg-gray-50 rounded">会心</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">黑夜</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">炎火</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">高热</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('tx2')">
+                    <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300 h-full flex items-center justify-center">
+                        <div class="w-full h-full grid grid-cols-2 grid-rows-2 gap-2">
+                            <div class="flex items-center justify-center bg-gray-50 rounded">冰霜</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">平衡</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">回神</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">冰冷</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('tx3')">
+                    <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300 h-full flex items-center justify-center">
+                        <div class="w-full h-full grid grid-cols-2 grid-rows-2 gap-2">
+                            <div class="flex items-center justify-center bg-gray-50 rounded">叶绿</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">机能</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">抵抗</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">阴森</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('tx4')">
+                    <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300 h-full flex items-center justify-center">
+                        <div class="w-full h-full grid grid-cols-2 grid-rows-2 gap-2">
+                            <div class="flex items-center justify-center bg-gray-50 rounded">飞空</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">魔幻</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">奇异</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">反攻</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('tx5')">
+                    <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300 h-full flex items-center justify-center">
+                        <div class="w-full h-full grid grid-cols-2 grid-rows-2 gap-2">
+                            <div class="flex items-center justify-center bg-gray-50 rounded">流水</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">威严</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">反击</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">慌张</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('tx6')">
+                    <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300 h-full flex items-center justify-center">
+                        <div class="w-full h-full grid grid-cols-2 grid-rows-2 gap-2">
+                            <div class="flex items-center justify-center bg-gray-50 rounded">坚硬</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">蓄电</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">顽强</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">带电</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('tx7')">
+                    <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300 h-full flex items-center justify-center">
+                        <div class="w-full h-full grid grid-cols-2 grid-rows-2 gap-2">
+                            <div class="flex items-center justify-center bg-gray-50 rounded">碎裂</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">战意</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">忽略</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">瞬杀</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('tx8')">
+                    <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300 h-full flex items-center justify-center">
+                        <div class="w-full h-full grid grid-cols-2 grid-rows-2 gap-2">
+                            <div class="flex items-center justify-center bg-gray-50 rounded">光环</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">汲取</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">借风</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">草率</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('tx9')">
+                    <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300 h-full flex items-center justify-center">
+                        <div class="w-full h-full grid grid-cols-2 grid-rows-2 gap-2">
+                            <div class="flex items-center justify-center bg-gray-50 rounded">精准</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">回避</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">坚韧</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">反驳</div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="card-hover" onclick="openPage('tx10')">
+                    <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300 h-full flex items-center justify-center">
+                        <div class="w-full h-full grid grid-cols-2 grid-rows-2 gap-2">
+                            <div class="flex items-center justify-center bg-gray-50 rounded">睡眠</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">中毒</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">圣灵</div>
+                            <div class="flex items-center justify-center bg-gray-50 rounded">反抗</div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1级子页面 元神珠吸收地点 -->
+            <div id="yszxx" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">尼尔号目前可孵化元神珠</h2>
+                <h2 class="text-x  mb-4 text-dark text-center">注意：双色元神珠只用吸收一个地点即可</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="card-hover" onclick="openPage('tr')">
                         <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
-                            <img src="icons/blke.png" alt="blke" class="w-16 h-16 mx-auto mb-2 object-contain ">
-                            <p class="text-sm text-dark">布莱卡恩</p>
+                            <img src="icons/tr.png" alt="tr" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">泰瑞</p>
                         </div>
                     </div>
 
+                    <div class="card-hover" onclick="openPage('lsbb')">
+                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
+                            <img src="icons/lsbb.png" alt="lsbb" class="w-16 h-16 mx-auto mb-2 object-contain ">
+                            <p class="text-sm text-dark">丽莎布布</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- 2级子页面 具体融合配方-->
-            <div id="klxx" class="page-content hidden">
-                <h2 class="text-xl font-bold mb-4 text-dark text-center">卡兰星系下的SPTBOSS</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="card-hover" onclick="selectCard(this); openPage('hmlt')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
-                            <img src="icons/hmlt.png" alt="hmlt" class="w-16 h-16 mx-auto mb-2 object-contain ">
-                            <p class="text-sm text-dark">哈莫雷特</p>
-                        </div>
-                    </div>
-
-                    <div class="card-hover" onclick="openPage('nnfd')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
-                            <img src="icons/nnfd.png" alt="nnfd" class="w-16 h-16 mx-auto mb-2 object-contain ">
-                            <p class="text-sm text-dark">奈尼芬多</p>
-                        </div>
-                    </div>
-
-                    <div class="card-hover" onclick="openPage('eesl')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
-                            <img src="icons/eesl.png" alt="eesl" class="w-16 h-16 mx-auto mb-2 object-contain ">
-                            <p class="text-sm text-dark">厄尔塞拉</p>
-                        </div>
-                    </div>
-
-                    <div class="card-hover" onclick="openPage('tkl')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
-                            <img src="icons/tkl.png" alt="tkl" class="w-16 h-16 mx-auto mb-2 object-contain ">
-                            <p class="text-sm text-dark">塔克林</p>
-                        </div>
-                    </div>
-
-                    <div class="card-hover" onclick="openPage('txy')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
-                            <img src="icons/txy.png" alt="txy" class="w-16 h-16 mx-auto mb-2 object-contain ">
-                            <p class="text-sm text-dark">塔西亚</p>
-                        </div>
-                    </div>
-
-                    <div class="card-hover" onclick="openPage('swe')">
-                        <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-secondary/30 transition-all duration-300">
-                            <img src="icons/swe.png" alt="ly" class="w-16 h-16 mx-auto mb-2 object-contain ">
-                            <p class="text-sm text-dark">塞维尔</p>
-                        </div>
-                    </div>
-
-                </div>
+            <div id="tr" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：固执,开朗丨推荐特性：精准,蓄电</h2>
+                <img src="icons/map/trrh.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="lsbb" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：沉着,大胆,保守丨推荐特性：坚硬,叶绿</h2>
+                <img src="icons/map/lsbbrh.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="lsw" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：固执,保守丨推荐特性：流水,坚硬</h2>
+                <img src="icons/map/lswrh.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="myxx" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：胆小,开朗,保守,固执丨推荐特性：会心,炎火</h2>
+                <img src="icons/map/myxxrh.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="heyf" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：开朗,固执丨推荐特性：飞空</h2>
+                <img src="icons/map/heyfrh.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="sgne" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：保守丨推荐特性：魔幻,瞬杀</h2>
+                <img src="icons/map/sgafyrh.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="klyk" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：保守丨推荐特性：奇异,坚硬,会心</h2>
+                <h2 class="text-x  mb-4 text-dark text-center mt-5 ">艾菲斯亚(主)+闪光皮皮融合-5%概率出粉色元神珠孵化可得卡鲁耶克</h2>
+                <img src="icons/map/sgafyrh.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="klks" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：固执丨推荐特性：碎裂</h2>
+                <img src="icons/map/klksrh.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="gly" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：保守丨推荐特性：冰霜,精准</h2>
+                <img src="icons/map/glyrh.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="slt" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：(不推荐练)丨推荐特性：平衡</h2>
+                <h2 class="text-x  mb-4 text-dark text-center mt-5 ">任意两只精灵融合即可获得米色元神珠(孵化随机出塞拉兔,辛娜斯,哈伊卡)</h2>
+            </div>
+            <div id="xns" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：(不推荐练)丨推荐特性：平衡</h2>
+                <h2 class="text-x  mb-4 text-dark text-center mt-5 ">任意两只精灵融合即可获得米色元神珠(孵化随机出塞拉兔,辛娜斯,哈伊卡)</h2>
+            </div>
+            <div id="hyk" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：(不推荐练)丨推荐特性：平衡</h2>
+                <h2 class="text-x  mb-4 text-dark text-center mt-5 ">任意两只精灵融合即可获得米色元神珠(孵化随机出塞拉兔,辛娜斯,哈伊卡)</h2>
+            </div>
+            <div id="dlls" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：保守丨推荐特性：炎火</h2>
+                <img src="icons/map/dllsrh.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="tlts" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：固执,保守丨推荐特性：机能</h2>
+                <img src="icons/map/tltsrh.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="sblt" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：胆小,保守丨推荐特性：黑夜,回避</h2>
+                <img src="icons/map/sbltrh.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="tmtm" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：固执丨推荐特性：战意,精准</h2>
+                <img src="icons/map/tmtmrh.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="akls" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">推荐性格：保守,胆小丨推荐特性：会心,精准</h2>
+                <img src="icons/map/aklsrh.png" alt="ttx" class=" mx-auto ">
             </div>
 
+            <div id="tx1" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">3个熔岩晶体 和 1个纯净能量</h2>
+                <img src="icons/tx1.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="tx2" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">1个大地之核 和 1个熔岩晶体 和 1个纯净能量 和 1 个海洋能量</h2>
+                <img src="icons/tx2.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="tx3" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">1个纯净能量 和 1个海洋能量 和 1个大地之核 和 1 个熔岩晶体</h2>
+                <img src="icons/tx3.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="tx4" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">1个熔岩晶体 和 3个纯净能量</h2>
+                <img src="icons/tx4.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="tx5" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">1个海洋能量 和 1个大地之核 和 1个熔岩晶体 和 1 个纯净能量</h2>
+                <img src="icons/tx5.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="tx6" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">1个熔岩晶体 和 1个纯净能量 和 1个海洋能量 和 1 个大地之核</h2>
+                <img src="icons/tx6.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="tx7" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">3个大地之核 和 1个海洋能量</h2>
+                <img src="icons/tx7.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="tx8" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">1个海洋能量 和 3个纯净能量</h2>
+                <img src="icons/tx8.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="tx9" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">随机四个可放入材料物品</h2>
+                <img src="icons/tx9.png" alt="ttx" class=" mx-auto ">
+            </div>
+            <div id="tx10" class="page-content hidden">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">4个甲烷</h2>
+                <img src="icons/tx10.png" alt="ttx" class=" mx-auto ">
+            </div>
 
 
 

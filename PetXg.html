@@ -1,11 +1,510 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nieo查询小工具</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#60A5FA',    // 主色调
+                        secondary: '#93C5FD',  // 辅助色
+                        accent: '#3B82F6',     // 强调色
+                        light: '#EFF6FF',      // 背景色
+                        dark: '#000000'        // 文本色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
 
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+
+            .card-hover:hover > div {
+                @apply border-2 border-accent;
+            }
+
+            .window-shadow {
+                box-shadow: 0 4px 20px rgba(96, 165, 250, 0.15);
+            }
+
+            .back-btn {
+                @apply px-3 py-1 rounded text-sm bg-white/30 hover:bg-white/50 text-dark transition-colors duration-200 focus:outline-none focus:ring-1 focus:ring-dark;
+            }
+
+            .title-icon {
+                @apply w-8 h-8 object-contain;
+            }
+
+        }
+    </style>
+</head>
+<body class="bg-light font-sans text-gray-700">
+    <!-- 主窗口容器 -->
+    <div class="w-full max-w-4xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden border border-primary/30 mt-4">
+        <!-- 标题栏 -->
+        <div class="bg-primary text-dark px-4 py-2 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <img src="icons/Ico.png" alt="工具图标" class="title-icon">
+                <span>Nieo查询小工具-by.B站-城南以南</span>
+            </div>
+
+            <!-- 按钮容器 -->
+            <div class="flex items-center gap-2">
+
+                <!-- 返回首页按钮 -->
+                <button id="backmain-button" class="back-btn" onclick="gomain()">
+                    <i class="fa fa-home mr-1"></i> 首页
+                </button>
+
+                <!-- 返回主按钮 -->
+                <button id="backmidlle-button" class="back-btn hidden" onclick="goMid()">
+                    <i class="fa fa-home mr-1"></i> 主页
+                </button>
+
+                <!-- 返回上一页按钮 -->
+                <button id="back-button" class="back-btn hidden" onclick="goBack()">
+                    <i class="fa fa-arrow-left mr-1"></i> 上一页
+                </button>
+            </div>
+        </div>
+
+        <!-- 内容区域-->
+        <div id="content-container" class="min-h-[200px] p-6">
+            <!-- 主页面 -->
+            <div id="main-page" class="page-content">
+                <h2 class="text-xl font-bold mb-4 text-dark text-center">精灵性格查询</h2>
+                <!-- 性格分组容器：添加分组之间的垂直间距 -->
+                <div class="space-y-8">
+                    <!-- 第一组：攻击型性格（4个卡片） -->
+                    <section class="border-2 border-dark rounded-lg p-4 mb-6">
+                        <h3 class="text-lg font-bold text-dark text-center mb-4 text-orange-600">攻击型性格（+攻击）</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-orange-300 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-orange-300 rounded text-orange-600 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        孤独
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #0ff007;">+攻击</span>
+                                        <span style="color: #dc2626;">-防御</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-orange-300 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-orange-300 rounded text-orange-600 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        固执
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #0ff007;">+攻击</span>
+                                        <span style="color: #dc2626;">-特工</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-orange-300 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-orange-300 rounded text-orange-600 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        调皮
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #0ff007;">+攻击</span>
+                                        <span style="color: #dc2626;">-特防</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-orange-300 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-orange-300 rounded text-orange-600 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        勇敢
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #0ff007;">+攻击</span>
+                                        <span style="color: #dc2626;">-速度</span>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 第二组：防御型性格（4个卡片） -->
+                    <section class="border-2 border-dark rounded-lg p-4 mb-6">
+                        <h3 class="text-lg font-bold text-dark text-center mb-4 text-yellow-700">防御型性格（+防御）</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-yellow-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-yellow-400 rounded text-yellow-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        大胆
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #703504;">+防御</span>
+                                        <span style="color: #dc2626;">-攻击</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-yellow-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-yellow-400 rounded text-yellow-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        顽皮
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #703504;">+防御</span>
+                                        <span style="color: #dc2626;">-特工</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-yellow-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-yellow-400 rounded text-yellow-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        无虑
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #703504;">+防御</span>
+                                        <span style="color: #dc2626;">-特防</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-yellow-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-yellow-400 rounded text-yellow-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        悠闲
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #703504;">+防御</span>
+                                        <span style="color: #dc2626;">-速度</span>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 第三组：特工型性格（4个卡片） -->
+                    <section class="border-2 border-dark rounded-lg p-4 mb-6">
+                        <h3 class="text-lg font-bold text-dark text-center mb-4 text-purple-700">特工型性格（+特工）</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-purple-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-purple-400 rounded text-purple-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        保守
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #b208f5;">+特工</span>
+                                        <span style="color: #dc2626;">-攻击</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-purple-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-purple-400 rounded text-purple-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        稳重
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #b208f5;">+特工</span>
+                                        <span style="color: #dc2626;">-防御</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-purple-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-purple-400 rounded text-purple-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        马虎
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #b208f5;">+特工</span>
+                                        <span style="color: #dc2626;">-特防</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-purple-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-purple-400 rounded text-purple-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        冷静
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #b208f5;">+特工</span>
+                                        <span style="color: #dc2626;">-速度</span>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 第四组：特防型性格（4个卡片） -->
+                    <section class="border-2 border-dark rounded-lg p-4 mb-6">
+                        <h3 class="text-lg font-bold text-dark text-center mb-4 text-pink-700">特防型性格（+特防）</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-pink-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-pink-400 rounded text-pink-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        沉着
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #1808f5;">+特防</span>
+                                        <span style="color: #dc2626;">-攻击</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-pink-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-pink-400 rounded text-pink-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        温顺
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #1808f5;">+特防</span>
+                                        <span style="color: #dc2626;">-防御</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-pink-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-pink-400 rounded text-pink-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        慎重
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #1808f5;">+特防</span>
+                                        <span style="color: #dc2626;">-特工</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-pink-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-pink-400 rounded text-pink-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        狂妄
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #1808f5;">+特防</span>
+                                        <span style="color: #dc2626;">-速度</span>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 第五组：速度型性格（4个卡片） -->
+                    <section class="border-2 border-dark rounded-lg p-4 mb-6">
+                        <h3 class="text-lg font-bold text-dark text-center mb-4 text-blue-700">速度型性格（+速度）</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-blue-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-blue-400 rounded text-blue-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        胆小
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #04fc94;">+速度</span>
+                                        <span style="color: #dc2626;">-攻击</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-blue-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-blue-400 rounded text-blue-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        急躁
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #04fc94;">+速度</span>
+                                        <span style="color: #dc2626;">-防御</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-blue-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-blue-400 rounded text-blue-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        开朗
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #04fc94;">+速度</span>
+                                        <span style="color: #dc2626;">-特工</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-blue-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-blue-400 rounded text-blue-700 font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        天真
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #04fc94;">+速度</span>
+                                        <span style="color: #dc2626;">-特防</span>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 第六组：平衡型性格（5个卡片） -->
+                    <section class="border-2 border-dark rounded-lg p-4 mb-6">
+                        <h3 class="text-lg font-bold text-dark text-center mb-4 text-gray-700">平衡型性格（无增减）</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-gray-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-gray-400 rounded text-gray font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        害羞
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #dc2626;">平衡发展</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-gray-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-gray-400 rounded text-gray font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        实干
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #dc2626;">平衡发展</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-gray-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-gray-400 rounded text-gray font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        坦率
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #dc2626;">平衡发展</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-gray-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-gray-400 rounded text-gray font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        浮躁
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #dc2626;">平衡发展</span>
+                                    </b>
+                                </div>
+                            </div>
+                            <div class="card-hover">
+                                <div class="bg-white rounded-lg shadow p-4 text-center border-2 border-gray-400 transition-all duration-300">
+                                    <div class="w-20 h-10 mx-auto mb-2 bg-gray-100 border-2 border-gray-400 rounded text-gray font-black text-xl flex items-center justify-center text-nowrap" style="line-height: 1;">
+                                        认真
+                                    </div>
+                                    <b class="text-sm">
+                                        <span style="color: #dc2626;">平衡发展</span>
+                                    </b>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+
+
+            <script>
+                // 栈（管理主子页面顺序）
+                let pageStack = ['main-page'];
+
+
+                /**
+                 * 打开新页面
+                 * @param {string} targetPageId - 目标页面ID
+                 */
+                function openPage(targetPageId) {
+                    // 1. 获取当前显示的页面（栈顶）
+                    const currentPageId = pageStack[pageStack.length - 1];
+                    // 2. 隐藏当前页面，显示目标页面
+                    document.getElementById(currentPageId).classList.add('hidden');
+                    document.getElementById(targetPageId).classList.remove('hidden');
+                    // 3. 目标页面加入栈，记录顺序
+                    pageStack.push(targetPageId);
+                    // 4. 显示返回按钮（栈长度>1时）
+                    updateBackButtons();
+                }
+
+                /**
+                 * 逐级返回上一页
+                 */
+                function goBack() {
+                    // 只剩主页面时不操作
+                    if (pageStack.length <= 1) return;
+                    // 1. 隐藏当前页面（栈顶）并移除
+                    const currentPageId = pageStack.pop();
+                    document.getElementById(currentPageId).classList.add('hidden');
+                    // 2. 显示上一级页面（新栈顶）
+                    const prevPageId = pageStack[pageStack.length - 1];
+                    document.getElementById(prevPageId).classList.remove('hidden');
+                    // 3. 更新返回按钮状态
+                    updateBackButtons();
+                }
+
+                // 返回首页
+                function gomain() {
+                    // 只剩主页面时跳回index
+                    if (pageStack.length <= 1) location.href = 'index.html';
+
+                    // 隐藏当前页面
+                    const currentPageId = pageStack.pop();
+                    document.getElementById(currentPageId).classList.add('hidden');
+                }
+
+                //返回副子页
+                function goMid() {
+
+                    // 隐藏当前页面
+                    const currentPageId = pageStack.pop();
+                    document.getElementById(currentPageId).classList.add('hidden');
+
+                    // 清空栈，只保留主页面
+                    pageStack = ['main-page'];
+
+                    // 显示主页面
+                    document.getElementById('main-page').classList.remove('hidden');
+
+                    // 更新返回按钮状态
+                    updateBackButtons();
+                }
+
+                // 更新返回按钮显示状态
+                function updateBackButtons() {
+                    const shouldShow = pageStack.length > 1;
+                    document.getElementById('backmidlle-button').classList.toggle('hidden', !shouldShow);
+                    document.getElementById('back-button').classList.toggle('hidden', !shouldShow);
+                    document.getElementById('backmain-button').classList.toggle('hidden', shouldShow);
+                }
+
+                // 页面加载初始化
+                document.addEventListener('DOMContentLoaded', function () {
+                    // 图片加载失败处理
+                    document.querySelectorAll('img').forEach(img => {
+                        img.onerror = function () {
+                            this.style.display = 'none';
+                            const icon = document.createElement('i');
+                            icon.className = img.classList.contains('title-icon')
+                                ? 'fa fa-search text-dark'
+                                : 'fa fa-question-circle text-4xl text-primary mx-auto';
+                            this.parentNode.insertBefore(icon, this);
+                        }
+                    });
+                });
+
+                // 检查是否从主页正常跳转过来
+                const fromIndex = sessionStorage.getItem('fromIndex');
+
+                if (fromIndex) {
+                    // 如果是正常跳转，清除标记（避免后续刷新时误判）
+                    sessionStorage.removeItem('fromIndex');
+                } else {
+                    // 如果没有标记（说明是刷新或直接访问），跳回主页
+                    window.location.href = 'index.html';
+                }
+
+            </script>
 </body>
 </html>
